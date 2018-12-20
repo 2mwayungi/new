@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Contact Me</title>
+    <style>
+    #map{
+      height:400px;
+      width:100%;
+    }
+  </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="menu-btn">
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+      </div>
+
+      <nav class="menu">
+        <div class="menu-branding"><div class="portrait"></div></div>
+        <ul class="menu-nav">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link"> Home </a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link"> About</a>
+          </li>
+          <li class="nav-item">
+            <a href="work.html" class="nav-link">Portfolio</a>
+          </li>
+          <li class="nav-item current">
+            <a href="contact.html" class="nav-link"> Contact </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+ 
+
+<div class="slide" id="slide5" data-slide="5" data-stellar-background-ratio="0.5">
+  <div class="container2 clearfix">
+  
+
+    <div class="content grid_12 contactmap" id="contact-map">
+      <div class="grid_4">
+        <h2>CONTACT</h2>
+        <p class="information"><span class="icon-location"> ADRESS: </span>Shinyanga, Tanzania.</p>
+        <p class="information"><span class="icon-phone-2"> TELEPHONE: </span>  (+255) 657861058</p>
+        <p class="information"><span class="icon-phone-2"> email: </span>  2mwayungi@gmail.com</p>
+        <a class="btn" href="https://github.com/2mwayungi" target="_blank">Github</a>
+        <div class="clear"></div>
+      </div>
+      <div class="grid_8 omega">
+          <h1>My Location</h1>
+  <div id="map"></div>
+
+         <script>
+             function initMap(){
+                 var options={
+                     zoom:8,
+                     center:{lat:-3.6810,lng:33.4271}
+                 }
+                 var map = new google.maps.Map(document.getElementById('map'),options);
+                 //marker
+                 /*
+                 var marker = new google.maps.Marker({
+                  position:{lat:-3.5594, lng:33.4075},
+                  map: map,
+                icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+                });
+                var infoWindow =new google.maps.InfoWindow({
+                    content:'<h1>OLD SHY</h1>'
+                });
+                 
+                 marker.addListener('click', function(){
+                     infoWindow.open(map, marker);
+                 });
+                 
+                 */
+                 var markers=[{coords:{lat:-3.5594, lng:33.4075}, /*iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', */
+                            
+                           }
+                             ];
+                 for(var i=0;i < markers.length;i++){
+                     addMarker(markers[i]);
+                 }
+                 
+                 
+                 
+                 /*addMarker({coords:{lat:-3.5594, lng:33.4075}, iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', 
+                            content:'<h1>Old shy</h1>'
+                           });
+                 addMarker({coords:{lat:-2.5167, lng:32.9},
+                           content: '<h1>mwanza</h1>'});*/
+                 function addMarker(props){
+                     var marker = new google.maps.Marker({
+                  position:props.coords,
+                  map: map,
+                //icon:props.iconImage
+                });
+                     if(props.iconImage){
+                         marker.setIcon(props.iconImage);
+                     }
+                     if(props.content){
+                         var infoWindow =new google.maps.InfoWindow({
+                          content:props.content
+                });
+                    marker.addListener('click', function(){
+                     infoWindow.open(map, marker);
+                    });
+                 
+                   
+                     }
+                }
+             }
+         </script>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDb3pSGT94da9qLdj9EttcA_72uwgryiw&callback=initMap">
+    </script>
+      </div>
+    </div>
+
+
+   
+  </div>
+</div>
+
+
+    <footer id="main-footer">Copyright &copy; 2018</footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
